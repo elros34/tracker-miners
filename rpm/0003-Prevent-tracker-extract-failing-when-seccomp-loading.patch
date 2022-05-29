@@ -23,7 +23,7 @@ index 88fbbe197e36c4a21d59adf9e6eaffda5e6f7c64..b4016b69b1522d27a7ea2b7ecf87400f
  		/* Any seccomp filters loaded into the kernel are not affected. */
  		seccomp_release (ctx);
  		return TRUE;
-+	} else if (rv == -EINVAL) {
++	} else if (rv == -EINVAL || rv == -ECANCELED) {
 +		/* Not supported, continue anyway */
 +		g_critical ("Seccomp-bpf not supported by host. Continuing without seccomp filters.");
 +		seccomp_release (ctx);
